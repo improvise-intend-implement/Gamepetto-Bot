@@ -6,10 +6,10 @@ import com.iii.gamepetto.gamepettobot.model.api.response.GuildResponse;
 import net.dv8tion.jda.api.entities.Guild;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 
-@ApplicationScoped
+@Dependent
 public class GuildServiceImpl implements GuildService {
 
 	@Inject
@@ -21,7 +21,7 @@ public class GuildServiceImpl implements GuildService {
 		guildRequest.setGuildId(guild.getId());
 		guildRequest.setName(guild.getName());
 		guildRequest.setIcon(guild.getIconId());
-		return guildRestClient.registerGuild(new GuildRequest());
+		return guildRestClient.registerGuild(guildRequest);
 	}
 
 }

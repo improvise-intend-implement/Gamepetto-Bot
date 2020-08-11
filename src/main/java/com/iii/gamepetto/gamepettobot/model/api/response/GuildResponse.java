@@ -1,7 +1,10 @@
 package com.iii.gamepetto.gamepettobot.model.api.response;
 
-public class GuildResponse{
+import java.io.Serializable;
 
+public class GuildResponse implements Serializable {
+
+	private final static long serialVersionUID = 124692315820657064L;
 	private Long id;
 	private String guildId;
 	private String botPrefix;

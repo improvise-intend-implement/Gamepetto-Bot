@@ -1,0 +1,9 @@
+quarkus:
+  http:
+    port: 8071
+
+gamepetto:
+  bot:
+    token: ${GAMEPETTO_BOT_TOKEN}
+
+gamepetto-guild-api/mp-rest/url: http://localhost:8090/api
