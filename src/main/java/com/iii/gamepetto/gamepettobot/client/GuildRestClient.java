@@ -6,7 +6,7 @@ import com.iii.gamepetto.gamepettobot.model.api.response.GuildResponse;
 import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
-import javax.inject.Singleton;
+import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 @RegisterProvider(value = ClientExceptionMapper.class)
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@Singleton
+@ApplicationScoped
 public interface GuildRestClient {
 
 	@POST

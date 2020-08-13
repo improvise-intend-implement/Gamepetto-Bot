@@ -1,6 +1,6 @@
 quarkus:
   http:
-    port: 8071
+    port: 8075
 
 gamepetto:
   bot:
