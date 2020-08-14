@@ -15,7 +15,10 @@ import javax.inject.Inject;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
 
 @QuarkusTest
 class GuildServiceImplTest {
@@ -39,6 +42,21 @@ class GuildServiceImplTest {
 		GuildResponse result = this.sut.registerGuild(mockGuild);
 
 		//then
+		then(this.guildRestClient).should(times(1)).registerGuild(any(GuildRequest.class));
 		assertThat(result.getGuildId(), is(guildId));
+	}
+
+	@Test
+	void deleteGuildShouldReturnGuildId() {
+		//given
+		String guildId = "test";
+		Mockito.when(this.guildRestClient.deleteGuild(guildId)).thenReturn(guildId);
+
+		//when
+		String result = this.sut.deleteGuild(guildId);
+
+		//then
+		then(this.guildRestClient).should(times(1)).deleteGuild(anyString());
+		assertThat(result, is(guildId));
 	}
 }
