@@ -62,20 +62,4 @@ class GuildEventTest {
 		then(this.guildService).should(times(1)).deleteGuild(anyString());
 	}
 
-	@Test
-	void onGuildLeaveShouldCatchNotFoundException() {
-		//given
-		GuildLeaveEvent gle = mock(GuildLeaveEvent.class);
-		Guild guild = mock(Guild.class);
-		String guildId = "test";
-		Mockito.when(gle.getGuild()).thenReturn(guild);
-		Mockito.when(guild.getId()).thenReturn(guildId);
-		Mockito.when(this.guildService.deleteGuild(guildId)).thenThrow(NotFoundException.class);
-
-		//when
-		this.sut.onGuildLeave(gle);
-
-
-	}
-
 }
