@@ -1,7 +1,6 @@
 package com.iii.gamepetto.gamepettobot.event;
 
 import com.iii.gamepetto.gamepettobot.service.GuildService;
-import io.quarkus.test.junit.QuarkusTest;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.guild.GuildJoinEvent;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +15,6 @@ import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 
-@QuarkusTest
 class GuildEventTest {
 
 	@Mock
@@ -26,6 +24,7 @@ class GuildEventTest {
 
 	@BeforeEach
 	void setup() {
+		this.sut = new GuildEvent();
 		MockitoAnnotations.initMocks(this);
 	}
 

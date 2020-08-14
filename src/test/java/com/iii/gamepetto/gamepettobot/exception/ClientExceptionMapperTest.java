@@ -1,6 +1,5 @@
 package com.iii.gamepetto.gamepettobot.exception;
 
-import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -13,7 +12,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.mockito.Mockito.mock;
 
-@QuarkusTest
 class ClientExceptionMapperTest {
 
 	ClientExceptionMapper sut = new ClientExceptionMapper();
