@@ -7,4 +7,5 @@ public interface GuildService {
 
 	GuildResponse registerGuild(Guild guild);
 
+	String deleteGuild(String guildId);
 }

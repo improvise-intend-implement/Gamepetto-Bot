@@ -2,6 +2,7 @@ package com.iii.gamepetto.gamepettobot.exception;
 
 import org.eclipse.microprofile.rest.client.ext.ResponseExceptionMapper;
 
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import java.io.ByteArrayInputStream;
@@ -16,6 +17,9 @@ public class ClientExceptionMapper implements ResponseExceptionMapper<RuntimeExc
 		switch(status) {
 			case 400:
 				runtimeException = new RemoteValidationException(responseBody);
+				break;
+			case 404:
+				runtimeException = new NotFoundException("Couldn't find: " + responseBody);
 				break;
 			default:
 				runtimeException = new WebApplicationException(status);

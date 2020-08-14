@@ -3,6 +3,7 @@ package com.iii.gamepetto.gamepettobot.exception;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
@@ -29,6 +30,21 @@ class ClientExceptionMapperTest {
 
 		//then
 		assertThat(result, instanceOf(RemoteValidationException.class));
+	}
+
+	@Test
+	void toThrowableShouldReturnNotFoundExceptionWhenStatusIs404() {
+		//given
+		Response response = mock(Response.class);
+		ByteArrayInputStream is = mock(ByteArrayInputStream.class);
+		Mockito.when(response.getStatus()).thenReturn(404);
+		Mockito.when(response.getEntity()).thenReturn(is);
+
+		//when
+		RuntimeException result = this.sut.toThrowable(response);
+
+		//then
+		assertThat(result, instanceOf(NotFoundException.class));
 	}
 
 	@Test

@@ -21,7 +21,12 @@ public class GuildServiceImpl implements GuildService {
 		guildRequest.setGuildId(guild.getId());
 		guildRequest.setName(guild.getName());
 		guildRequest.setIcon(guild.getIconId());
-		return guildRestClient.registerGuild(guildRequest);
+		return this.guildRestClient.registerGuild(guildRequest);
+	}
+
+	@Override
+	public String deleteGuild(String guildId) {
+		return this.guildRestClient.deleteGuild(guildId);
 	}
 
 }
