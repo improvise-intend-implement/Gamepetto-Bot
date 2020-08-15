@@ -1,6 +1,7 @@
 package com.iii.gamepetto.gamepettobot;
 
 import com.iii.gamepetto.gamepettobot.event.GuildEvent;
+import com.iii.gamepetto.gamepettobot.service.GuildService;
 import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
@@ -17,11 +18,14 @@ public class BotMain implements QuarkusApplication {
 	String token;
 	@Inject
 	GuildEvent guildEvent;
+	@Inject
+	GuildService guildService;
 
 	@Override
 	public int run(String... args) throws Exception {
-		JDA jda = JDABuilder.createDefault(token).build();
-		jda.addEventListener(guildEvent);
+		JDA jda = JDABuilder.createDefault(this.token).build();
+		jda.addEventListener(this.guildEvent);
+		this.guildService.loadAllPrefixes();
 		jda.awaitReady();
 		Quarkus.waitForExit();
 		return 0;
