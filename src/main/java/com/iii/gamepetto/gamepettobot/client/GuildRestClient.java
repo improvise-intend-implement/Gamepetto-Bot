@@ -28,6 +28,5 @@ public interface GuildRestClient {
 
 	@DELETE
 	@Path("/{guildId}")
-	String deleteGuild(@PathParam String guildId);
-
+	String deleteGuild(@PathParam("guildId") String guildId);
 }
