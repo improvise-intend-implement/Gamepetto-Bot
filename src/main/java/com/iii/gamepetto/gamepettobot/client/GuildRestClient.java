@@ -9,11 +9,13 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.Map;
 
 @Path("/guild")
 @RegisterRestClient(configKey = "gamepetto-guild-api")
@@ -29,4 +31,8 @@ public interface GuildRestClient {
 	@DELETE
 	@Path("/{guildId}")
 	String deleteGuild(@PathParam("guildId") String guildId);
+
+	@GET
+	@Path("/prefix")
+	Map<String, String> getAllPrefixes();
 }
