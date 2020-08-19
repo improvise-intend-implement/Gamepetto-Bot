@@ -1,6 +1,6 @@
 quarkus:
   http:
-    port: 8075
+    port: 8074
   log:
     level: INFO
 
