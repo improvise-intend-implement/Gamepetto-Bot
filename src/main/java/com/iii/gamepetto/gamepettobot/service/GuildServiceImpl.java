@@ -2,6 +2,7 @@ package com.iii.gamepetto.gamepettobot.service;
 
 import com.iii.gamepetto.gamepettobot.client.GuildRestClient;
 import com.iii.gamepetto.gamepettobot.model.api.GuildPrefix;
+import com.iii.gamepetto.gamepettobot.model.api.request.BotPrefix;
 import com.iii.gamepetto.gamepettobot.model.api.request.GuildRequest;
 import com.iii.gamepetto.gamepettobot.model.api.response.GuildResponse;
 import com.iii.gamepetto.gamepettobot.repository.GuildRepository;
@@ -48,5 +49,16 @@ public class GuildServiceImpl implements GuildService {
 	@Override
 	public void savePrefix(GuildPrefix guildPrefix) {
 		this.guildRepository.savePrefix(guildPrefix);
+	}
+
+	@Override
+	public void changePrefix(GuildPrefix guildPrefix) {
+		this.guildRestClient.changePrefix(guildPrefix.getGuildId(), new BotPrefix(guildPrefix.getBotPrefix()));
+		this.guildRepository.savePrefix(guildPrefix);
+	}
+
+	@Override
+	public String getPrefix(String guildId) {
+		return this.guildRepository.getPrefix(guildId);
 	}
 }

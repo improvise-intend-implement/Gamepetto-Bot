@@ -1,6 +1,7 @@
 package com.iii.gamepetto.gamepettobot.client;
 
 import com.iii.gamepetto.gamepettobot.exception.ClientExceptionMapper;
+import com.iii.gamepetto.gamepettobot.model.api.request.BotPrefix;
 import com.iii.gamepetto.gamepettobot.model.api.request.GuildRequest;
 import com.iii.gamepetto.gamepettobot.model.api.response.GuildResponse;
 import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
@@ -10,6 +11,7 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.Path;
@@ -35,4 +37,8 @@ public interface GuildRestClient {
 	@GET
 	@Path("/prefix")
 	Map<String, String> getAllPrefixes();
+
+	@PATCH
+	@Path("/{guildId}/prefix")
+	void changePrefix(@PathParam("guildId") String guildId, BotPrefix botPrefix);
 }
