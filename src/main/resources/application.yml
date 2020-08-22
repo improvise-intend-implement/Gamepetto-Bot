@@ -1,11 +1,13 @@
 quarkus:
   http:
-    port: 8075
+    port: 8074
   log:
     level: INFO
 
 gamepetto:
   bot:
+    prefix:
+      default: "!"
     token: ${GAMEPETTO_BOT_TOKEN}
 
 gamepetto-guild-api/mp-rest/url: http://localhost:8090/api

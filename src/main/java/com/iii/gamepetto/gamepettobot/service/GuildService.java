@@ -13,4 +13,8 @@ public interface GuildService {
 	void loadAllPrefixes();
 
 	void savePrefix(GuildPrefix guildPrefix);
+
+	void changePrefix(GuildPrefix guildPrefix);
+
+	String getPrefix(String guildId);
 }

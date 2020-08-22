@@ -1,6 +1,7 @@
 package com.iii.gamepetto.gamepettobot.repository;
 
 import com.iii.gamepetto.gamepettobot.model.api.GuildPrefix;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -11,7 +12,12 @@ import static org.hamcrest.Matchers.*;
 
 class GuildLocalMemoryRepositoryImplTest {
 
-	GuildRepository sut = new GuildLocalMemoryRepositoryImpl();
+	GuildRepository sut;
+
+	@BeforeEach
+	void setup() {
+		this.sut = new GuildLocalMemoryRepositoryImpl();
+	}
 
 	@Test
 	void getPrefixShouldReturnNullValueWhenKeyDoesntExist() {
