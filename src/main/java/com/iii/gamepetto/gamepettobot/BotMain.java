@@ -19,5 +19,4 @@ public class BotMain implements QuarkusApplication {
 		Quarkus.waitForExit();
 		return 0;
 	}
-
 }
