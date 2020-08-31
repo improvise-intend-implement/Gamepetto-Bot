@@ -2,14 +2,17 @@ package com.iii.gamepetto.gamepettobot.command;
 
 import com.iii.gamepetto.gamepettobot.exception.RemoteValidationException;
 import com.iii.gamepetto.gamepettobot.model.api.GuildPrefix;
+import com.iii.gamepetto.gamepettobot.restriction.ServerOwnerRestriction;
 import com.iii.gamepetto.gamepettobot.service.GuildService;
 import net.dv8tion.jda.api.entities.Message;
 import net.kautler.command.api.Command;
+import net.kautler.command.api.annotation.RestrictedTo;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 @ApplicationScoped
+@RestrictedTo(ServerOwnerRestriction.class)
 public class PrefixCommand implements Command<Message> {
 
 	@Inject
