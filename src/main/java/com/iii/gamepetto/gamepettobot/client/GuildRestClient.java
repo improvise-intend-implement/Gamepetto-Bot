@@ -19,7 +19,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.Map;
 
-@Path("/guild")
+@Path("/guilds")
 @RegisterRestClient(configKey = "gamepetto-guild-api")
 @RegisterProvider(value = ClientExceptionMapper.class)
 @Consumes(MediaType.APPLICATION_JSON)

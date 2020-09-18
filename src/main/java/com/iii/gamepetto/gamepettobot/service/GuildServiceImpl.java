@@ -25,7 +25,7 @@ public class GuildServiceImpl implements GuildService {
 	@Override
 	public GuildResponse registerGuild(Guild guild) {
 		GuildRequest guildRequest = new GuildRequest();
-		guildRequest.setGuildId(guild.getId());
+		guildRequest.setId(guild.getId());
 		guildRequest.setName(guild.getName());
 		guildRequest.setIcon(guild.getIconId());
 		GuildResponse guildResponse = this.guildRestClient.registerGuild(guildRequest);
